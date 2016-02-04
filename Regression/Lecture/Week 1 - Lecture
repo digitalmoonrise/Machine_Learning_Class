@@ -1,0 +1,73 @@
+Lecture Notes Week One
+
+Data->Regression->Intelligence
+
+This course is going to use the housing price dataset
+
+Simple Regression: 1 input to just fit a line. 
+    1.Goodness of fit metric: Gradient Descent algorithm (lower is better fit)
+
+Multiple regression
+    2. More complex than just a line, and incorporates more than one input
+
+Bias-variance tradeoff: simple models behave well, but are too simple whereas complicated models describe well what is happening to data, but behave strangely when it comes to the data. 
+
+Regression Fundamentals
+
+Simple Regression
+
+Data = (X1 = sq.ft, y1 = $)...(Xi = sqft, Yi = $)
+
+Input = X
+Output = Y
+
+IDea is that we can predict $ based on SQFT or a function f(x).
+
+Regression model = Yi = f(Xi) + Ei
+
+E(epsolon) = error
+
+E[Ei] = 0
+Equally likely that our error is positive or negative. This implies that Yi could be >|< f(Xi)
+
+simple linear f(x)
+
+Yi = W0 + W1Xi + Ei
+
+W0 = intercept
+W1 = Slope 
+xi = input 
+
+
+REsidual sum of squares (RSS) -- Adding up the residuals from the actual observation and the line
+
+      N    
+Sigma Σ ai,  What this means is that you're summing over a ai until N)
+     i=1  
+             N
+RSS(W0,W1) = Σ (Y1-[w0+w1xi])^2
+            i=1
+            
+next            
+WRONG 5.-482740.284 try two -4166 try 3. 44850
+Magnitude depends on units of both features and observations
+
+y = 4569 + 143X
+
+Questions
+1.2
+2.2
+3.false 
+4. 52
+5. -44850
+6.3022
+7. d
+
+quiz 2
+1. 700074
+2. 1
+3. 
+4.
+
+
+W1 = sumy1x1 - sumy1x1

@@ -1,0 +1,134 @@
+Polynomial regression
+    A. quadratic equation f(x) = w0 + w1x+ w2x^2
+    B. Generic model: yi =  w0 + w1x+ w2x^2 +... +WpXi^p + Errori
+ 
+Detrending example
+y1 = W0 + W1Ti + W2sin(2'pi'Ti / 12 - φ) + Errori
+
+Yi = W0 + W1Ti + W2sin(2'pi'Ti / 12) + W3cos(2'pi'Ti / 12) + Errori
+
+the sin will give us the waves. 
+φ is the unknown phase/shift -- in this case, we know that summer is better than winter, but we don't exactly know when the shift will take place. 
+
+The sin and cos are features of the seasonal housing data and give a clearer picture of the seasonality. 
+
+Generic basis expansion equation
+h = a feature
+
+D
+Σ WjHj(Xi) + Errori
+j=0
+
+output of feature extraction box in ML Box is h(x). (no longer just x because it's really a function of x)
+
+NOTATION
+
+Output: y
+Inputs: x = (x[1],x[2],...x[d]) {When x is BOLD it is a vector)
+
+Notational conventions:
+X[j] = jth input of the x vector
+Hj(X) = jth feature of the inputs
+Xi = input of the ith data point
+Xi[j] = jth input of the ith data point
+scalar = a single point 
+N = number of observation
+d = inputs X[j]
+D = number of features [of those inputs Hj(X)]
+T = tiny 
+H = all of the features of the observations stacked up together into one giant      matrix
+H(w) - vector of results, essentially vector of yhat. 
+
+Generic multiple regression equation:
+D
+Σ WjHj(Xi) + Errori
+j=0
+
+
+REVIEW OF MATRIX ALGEGRA
+
+
+transpose --> always consider vectors as columns, and the transpose is just a transposition of a vector. [You'll note a small T above the transposed vector. 
+
+a scalar is a real number and not a vector in linear algebra. A single point. 
+
+REWRITE IN MATRIX NOTATION
+
+Y(bold) = Hw + Epsolon (basically it is that the H vector is H(xi)...H(xn)*WT
+
+Simple RSS in linear regression:
+      N
+RSS = Σ(Yi - [W0 + W1Xi])^2
+     i = 1
+     
+Residual = the difference between your observation and the actual value. 
+
+RSS for multiple regression:
+
+         N
+RSS(W) = Σ (Yi - HT(xi)W)^2
+        i = 1
+
+Which in matrix notation is: Σ(y-Hw)T(y-Hw)
+Essentially youre taking your y - yhat^2. because y-Hw(which is your y hat) and multiplying it by the transpose of y-Hw
+
+COMPUTING THE GRADIENT OF RSS
+Matrix notation: = -2HT(y-Hw)
+
+
+CLOSED FORM SOLUTION
+set gradient to 0 and solve for w. 
+
+-2HT(y-Hw) = 0 --> -2HTy +2HTHw=0 --> HTHw = HTy --> 
+****SOLUTION W-hat = (HTH)^-1HTy
+
+breaking it down 
+(HTH) is H multiplied by it's transposed. This, turns into a square matrix that is DxD which is #features*#features. 
+
+A matrix will be invertible if N > D. 
+
+Complexity = a big O. O(D^3). Complexity is a cubed of dimensions. 
+
+GRADIENT DESCENT
+-2HT(y-Hw)
+
+matrix notation of gradient descent:
+WT +2nHT(y-yhat(WT))
+
+Feature by feature update. 
+
+If underestimating the jth feature WjT-hat the gradient descent (yi-yhat(WT) on average will be positive. The impact of this is that we increase wj-hat
+
+Summarize gradient descent:
+
+Magnitude of RSS = SQRT(partial[i]....+partial[D]^2)
+
+While magnitude of RSS > Epsolon (Tolderance)
+    for j = 0,...,D
+        partial[j] = -2Σhj(Xi)(yi-y-hati(WT))
+        
+QUIZ lecture:
+1. 4
+2. false
+3. might
+4. stay the same
+5. min/max
+6. parameters
+7. ???
+8. 5000
+9. 3
+
+QUIZ 2:
+
+1.12.45
+2. 7.50
+3. 7.55
+4. -74.65
+5.pos
+6.neg
+7. 3
+8. 2 
+
+
+
+
